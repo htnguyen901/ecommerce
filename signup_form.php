@@ -52,6 +52,7 @@ include 'header.php'
 </div>
 </div>
 <?php
+	include 'db.php';
 
 	if(isset($_POST['signup']))
 	{
@@ -69,34 +70,45 @@ include 'header.php'
 		
 		$check_cus= mysqli_query($con,$check_customer);
 		
-		while ($check_cuss=mysqli_fetch_array($con,$check_cus))
+		/*while ($check_cuss=mysqli_fetch_array($con,$check_cus))
 		{
 			if(
-			$name=$check_cuss['cusName']&&
-			$phone=$check_cuss['phone'] &&
-			$email=$check_cuss['cusEmail'] &&
-			$address=$check_cuss['shipping_add'])
+			$username=$check_cuss['username'])
+
 			{
-					echo "Customer is already existed";
-					break;
+					echo "Account is already existed";
+					
 				}
 			else
-			{
-				$insert_customer= "insert into customer (customerID,cusName,phone,billing_add,shipping_add,cusEmail) values ('','$name','$phone','','$ship_add',$email)";
+			{*/
+				$insert_customer= "insert into customer (cusName,phone,shipping_add,cusEmail) values ('$name',$phone,'$ship_add','$email')";
+				
+				
 				
 				$insert_cus = mysqli_query($con,$insert_customer);
-
-				$insert_account= "insert into useraccount (user_name,pass_word,customerID) values ('$username','$password','')";
 				
-				$insert_acc = mysqli_query($con,$insert_account);
-				
-				if($insert_acc && $insert_cus)
+				if($insert_cus)
 				{
-					echo "Account created with $username,$password";
+					$cus_id = mysqli_insert_id($con);
+					
+					$insert_account= "insert into useraccount (user_name,pass_word,customerID) values ('$username','$password',$cus_id)";
+				
+					$insert_acc = mysqli_query($con,$insert_account);
+					
+					if($insert_acc && $insert_cus)
+					{
+					echo "Account is created";
 					}
-			}
-			break;
-		}
+
+
+				}
+				/*if($insert_acc && $insert_cus)
+				{
+					echo "Account is created";
+					}
+			/*}
+			
+		}*/
 		
 	}
 

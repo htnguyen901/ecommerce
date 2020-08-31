@@ -1,13 +1,6 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Untitled Document</title>
-</head>
 
-<body>
 <div id="insert-product-div">
-	<form id="form-insert-category" action="" method="post" enctype="multipart/form-data" name="insert-category">
+	<form id="form-insert-category" action="insert_category.php" method="post" enctype="multipart/form-data" >
     	<table id="table-insert-category" align="center" style="background-color:#FFF" >
 
         	<tr>
@@ -46,28 +39,28 @@
         </table>
     </form>
 </div>
-</body>
-</html>
+
 
 
 <?php
-
+	include '../db.php';
 	if(isset($_POST['create-category']))
 	{
+		
 		$category_name= $_POST['category-name'];
 		$category_id= $_POST['category-id'];
 		$description = $_POST['description'];
 		
 
 		/*insert to mySQL*/
-		$insert_category= "insert into category (categoryID,categoryName,description) values ($category_id,$category_name,$description)";
+		$insert_category= "insert into category (categoryID,categoryName,description) values ('$category_id','$category_name','$description')";
 		
 		$insert_cat = mysqli_query($con,$insert_category);
 		
-		if($insert_pro)
+		if($insert_cat)
 		{
-			echo "Product has been successfully created";
-			header("Location:admin_page/insert_product.php");
+			echo "<script>alert('Category has successfully created')</script>";
+			header("Location:select_category.php");
 		}
 		
 	}

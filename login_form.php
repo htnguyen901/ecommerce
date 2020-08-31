@@ -1,9 +1,12 @@
 <?php
-include 'header.php'
+
+include 'header.php';
+
 ?>
+
 <div id="form" style="background-image:url(images/background.jpg); margin:0 5%; height:1000px">
 <div id="table-form" style="margin: 10%">
-    <form action="action_page.php" method="post" enctype="multipart/form-data" style="padding:10%">
+    <form action="process_login.php" method="post" style="padding:10%">
     <table class="login" align="center" cellpadding="3" style="background-color:#FFF; padding:5%;border-radius:10px;opacity:0.9" >
           <tr>
             <td colspan="2" align="center">
@@ -30,3 +33,4 @@ include 'header.php'
     </form>
 </div>
 </div>
+

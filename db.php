@@ -7,7 +7,7 @@ $database = "shoppingmall";
 
 
 // Create connection
-$con = mysqli_connect($servername,$username, $password,$database);
+$con = mysqli_connect($servername,$username, $password, $database);
 
 // Check connection
 if (!$con) {

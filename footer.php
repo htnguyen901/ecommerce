@@ -1,6 +1,6 @@
 <!-- Footer -->
 <footer class="page-footer font-small elegant-color-dark
-#212121">
+#212121" style="position:relative;overflow:hidden;width:100%;">
 
   <!-- Footer Links -->
   <div class="container text-center text-md-left">
@@ -30,7 +30,7 @@
       <div class="col-md-2 mx-auto">
 
         <!-- Links -->
-        <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Quick Shop</h5>
+        <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Quick Link</h5>
 
         <ul class="list-unstyled">
           <li>

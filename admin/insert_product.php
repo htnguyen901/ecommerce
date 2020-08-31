@@ -1,54 +1,14 @@
-<!doctype html>
+<style>
+	<?php include'admin_style.css'; ?>
+</style>
+
 <?php
 	include '../db.php';
 ?>
 
-<html>
-<head>
-<meta charset="utf-8">
-<title>Untitled Document</title>
-<style>
-	#insert-product-div
-	{
-		background-image:url(../images/admin_background.jpg);
-		}
-	#form-insert-product
-	{
-		padding:5%;
-		opacity: 0.9;
-		}
-		
-	#table-insert-product
-	{
-		padding:5%;
-		border-spacing:10px;
-		border-radius:25px;
-		}
-	#title-insert
-	{
-		font-size:25px;
-		margin:15%;
-		text-transform:uppercase;
-		text-emphasis:accent;
-		}
-	#submit-insert
-	{
-		font-size:16px;
-		border-radius:5px;
-		transition-duration:0.3s;
-		background-color: white;
-  		color: black;
-		}
-	#submit-insert:hover
-	{
-		background-color: #e7e7e7;
-		}
-</style>
-</head>
 
-<body>
 <div id="insert-product-div">
-	<form id="form-insert-product" action="" method="post" enctype="multipart/form-data" name="insert-product">
+	<form id="form-insert-product" action="insert_product.php" method="post" enctype="multipart/form-data">
     	<table id="table-insert-product" align="center" style="background-color:#FFF" >
 
         	<tr>
@@ -90,9 +50,9 @@
 						while ($row_cat= mysqli_fetch_array($run_cat))
 						{
 							$categoryID = $row_cat['categoryID'];
-							$categoryName = $row_cat['categoryName'];
+							$category_Name = $row_cat['categoryName'];
 							$description = $row_cat['description'];
-						echo "<option>$categoryName </option>";
+						echo "<option>$category_Name </option>";
 						}
                         ?>
  
@@ -154,10 +114,10 @@
         </table>
     </form>
 </div>
-</body>
-</html>
+
 
 <?php
+	global $con;
 
 	if(isset($_POST['create-product']))
 	{
@@ -178,15 +138,15 @@
 		$product_quantity= $_POST['product-quantity'];
 		$product_price= $_POST['product-price'];
 		
-		/*insert to mySQL*/
-		$insert_product= "insert into prodct (productID,name,brand,gender,product_detail,quantityInStock,price,categoryName,product_img) values ('$product_id','$product_name','$product_brand','$product_gender','$product_detail','$product_quantity','$product_price','$product_category','$product_image')";
+		
+		$insert_product= "insert into prodct(productID,name,brand,gender,product_detail,quantityInStock,price,categoryNAME,product_img) values ('$product_id','$product_name','$product_brand','$product_gender','$product_detail',$product_quantity,$product_price,'$product_category','$product_image')";
 		
 		$insert_pro = mysqli_query($con,$insert_product);
 		
 		if($insert_pro)
 		{
-			echo "Product has been successfully created";
-			header("Location:admin_page/insert_product.php");
+			echo "<script>alert('Product has been successfully created')<script>";
+			
 		}
 		
 	}

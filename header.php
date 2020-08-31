@@ -1,8 +1,8 @@
-
-<!DOCTYPE html>
 <?php
+session_start();
 	include 'functions/function.php';
 ?>
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset=utf-8 />
@@ -11,6 +11,11 @@
 
 <link rel="stylesheet" href="styles/style.css" media="all" >
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
 
 <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -34,7 +39,7 @@
                 <span>FREE SHIPPING ON ALL ORDERS</span>
             </div>
         </div>
-           
+        <nav>
             <div id="menu-bar">
                 <div id="nav">
                     <!-- shop mens-->
@@ -43,7 +48,9 @@
                           <div class="dropdown-content">
                             <!--<a href="#">Shop all men</a>-->
                             
-                            <?php getCat();?>
+                            <?php 
+							$id_gen='Men';
+							getCat($id_gen);?>
                             
                           </div>
                       </button>
@@ -55,7 +62,9 @@
                           <div class="dropdown-content">
                             <!--<a href="#">Shop all women</a>-->
                             
-                            <?php getCat();?>
+                            <?php
+							$id_gen='Women'; 
+							getCat($id_gen);?>
                           </div>
                       </button>
                     </div>
@@ -83,19 +92,31 @@
                 </div>
             
                 <div id="cart">
-                	<div class="dropdown" id="account">
-                        <button class="dropbtn">My account
-                          <div class="dropdown-content">
+                	<div class="dropdown" id="account" style="list-style-type:none;">
+
+                        <?php
+						//session_start();
+						if (isset($_SESSION['username']))
+						{
+							echo $_SESSION['username'];
                             
-                            <li><a href="login_form.php">Log In</a></li>
-                            <li><a href="signup_form.php">Sign Up</a></li>
-                            
-                          </div>
-                       </button>
+                            echo "<li><a href='logout.php'>Log Out</a></li>";
+                            //echo "<li><a href='#'>Sign Up</a></li>";
+							
+							}
+						else
+						{
+							echo "My account";
+							echo "<li><a href='login_form.php'>Log In</a></li>";
+                            echo "<li><a href='signup_form.php'>Sign Up</a></li>";
+							}
+						
+						?>
+
                		</div>
                         
                     <div id="shopping-cart">
-                        <a href="">Cart
+                        <a href="shopping_cart.php">Cart
                            <span>
                         <!--Draw Cart Icon-->
                             <svg width="17" height="15" viewBox="0 0 17 15" xmlns="http://www.w3.org/2000/svg">
@@ -107,5 +128,6 @@
                     </div>
                 </div>
             </div>
+         </nav>
      </div>
 </header>
