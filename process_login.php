@@ -26,7 +26,7 @@ if(isset($_POST['login'])){
 			}
 		else
 		{
-			echo 'Username or Password incorrect';
+			echo '<script type="text/javascript">alert ("Username or Password incorrect");</script>';
 			header("location: login_form.php");
 			}
 		
@@ -52,7 +52,7 @@ if(isset($_POST['login'])){
 			else { 
 				  
 				// If the username and password doesn't match 
-				echo "Username or password incorrect"; 
+				echo "<script type='text/javascript'>alert ('Username or Password incorrect');</script>"; 
 				header('location: login_form.php');
 			} 
 	}

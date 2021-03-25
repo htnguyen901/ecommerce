@@ -70,17 +70,17 @@ include 'header.php'
 		
 		$check_cus= mysqli_query($con,$check_customer);
 		
-		/*while ($check_cuss=mysqli_fetch_array($con,$check_cus))
-		{
+		$check_cuss=mysqli_fetch_array($con,$check_cus);
+		
 			if(
 			$username=$check_cuss['username'])
 
 			{
-					echo "Account is already existed";
-					
+					echo "<script type='text/javascript'>alert('Account is already existed');</script>";
+					break;
 				}
-			else
-			{*/
+				else
+
 				$insert_customer= "insert into customer (cusName,phone,shipping_add,cusEmail) values ('$name',$phone,'$ship_add','$email')";
 				
 				
@@ -102,15 +102,9 @@ include 'header.php'
 
 
 				}
-				/*if($insert_acc && $insert_cus)
-				{
-					echo "Account is created";
-					}
-			/*}
-			
-		}*/
-		
-	}
+	
+			}
+	
 
 
 

@@ -8,7 +8,7 @@
 	{
 		$cat=$_GET['cat_name'];
 		$gender=$_GET['gender'];
-    	getProCatMen($cat,$gender);
+    	getProCat($cat,$gender);
 	}
 	?>
 </div>

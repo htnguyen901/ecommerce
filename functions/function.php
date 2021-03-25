@@ -97,7 +97,7 @@ function getProWomen()
 
 	
 	
-function getProCatMen($cat,$gender)
+function getProCat($cat,$gender)
 {
 	global $con;
 	
@@ -115,13 +115,13 @@ function getProCatMen($cat,$gender)
 		$productImage = $row_pro_cat['product_img'];
 		
 		
-	echo "<div style='float:left;margin:2% 0 2% 7%;text-align:center;'>
+	echo "<div style='float:left;margin:2% 10% 2% 9.5%;text-align:center;'>
 	
 			<a href='product_detail.php?pro_id=$product_id' style='color:black'>
 				<img src='produc_img/$productImage' width='100' height='260' />
 				
-				<p><b> $productName </b></p>
-				<p> $productPrice </p>
+				<p style='font-size:16px;'><b> $productName </b></p>
+				<p style='font-size:14px;'> $productPrice </p>
 			
 			</a>
 	
